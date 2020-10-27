@@ -26,11 +26,12 @@ private log(message: string) {
 
 /** GET heroes from the server */
 /** GET hero by id. Will 404 if id not found */
-getHero(id: number): Observable<User> {
+getUserById(id: number): Observable<User> {
+
   const url = `${this.accountUrl}/${id}`;
   return this.http.get<User>(url).pipe(
-    tap(_ => this.log(`fetched hero id=${id}`)),
-    catchError(this.handleError<User>(`getHero id=${id}`))
+    tap(_ => this.log(`fetched account id=${id}`)),
+    catchError(this.handleError<User>(`account id=${id}`))
   );
 }
 

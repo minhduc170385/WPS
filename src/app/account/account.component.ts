@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../service/auth.service';
 import { User } from './../user';
-import { Router } from  '@angular/router';
 import { Observable} from 'rxjs';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'account',
@@ -15,7 +15,7 @@ export class AccountComponent implements OnInit {
   selectedAccount: User;
   currentItem = 'Television';
 
-  constructor(private authService: AuthService) {  
+  constructor(private authService: AuthService, private route: ActivatedRoute) {  
 
   }
 
@@ -34,7 +34,7 @@ export class AccountComponent implements OnInit {
     console.log(">>>>"+ account.id);
   }
 
-  
+
 
 
 

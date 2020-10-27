@@ -24,7 +24,8 @@ import { AccountDetailComponent } from './account-detail/account-detail.componen
     NavbarComponent,   
     AdminComponent, 
     MessagesComponent, 
-    AccountComponent, AccountDetailComponent
+    AccountComponent, 
+    AccountDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +35,9 @@ import { AccountDetailComponent } from './account-detail/account-detail.componen
     RouterModule.forRoot([
       { path: '', pathMatch: 'full', redirectTo: 'login'},
       { path: 'login', component: LoginComponent },
-      { path: 'account', component: AccountComponent,canActivate: [AuthGuard]}, 
+      { path: 'account', component: AccountComponent}, 
+      { path: 'accountDetail', component: AccountDetailComponent },
+      { path: 'accountDetail/:id', component: AccountDetailComponent },
       { path: 'admin', component: AdminComponent,canActivate: [AuthGuard] }
     ]),
 

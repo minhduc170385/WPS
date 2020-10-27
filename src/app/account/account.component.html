@@ -1,41 +1,55 @@
-<h2>Account</h2>
-<div>
-    <table id="tblAccount" class="table table-striped table-bordered" style="width:80%;margin-left: 30px;">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>User Name</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Active</th>                
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor ="let acc of accounts"
-            (click)="onSelect(acc)">
-            
-                <td>{{acc.id}}</td>
-                <td>{{acc.username}}</td>
-                <td>{{acc.email}}</td>
-                <td>{{acc.role}}</td>
-                <td>
-                    <span *ngIf="acc.active" style="color:green">
-                        Active
-                    </span>
-                    <span *ngIf="!acc.active" style="color:red">
-                        Deactive
-                    </span>
-                    
-                </td>
+<!-- style="width:80%;margin-left: 30px;" -->
+<div class="container">    
+    <div>
+        <a class="btn btn-primary float-right" role="button" [routerLink]="['/accountDetail']">Add New</a>
+    </div>
+    
+    <div>
+        <table id="tblAccount" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Active</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor ="let acc of accounts"
+                (click)="onSelect(acc)">
+                
+                    <td>{{acc.id}}</td>
+                    <td>{{acc.username}}</td>
+                    <td>{{acc.email}}</td>
+                    <td>{{acc.role}}</td>
+                    <td>
+                        <span *ngIf="acc.active" style="color:green">
+                            Active
+                        </span>
+                        <span *ngIf="!acc.active" style="color:red">
+                            Deactive
+                        </span>                    
+                    </td>
+                    <td>                   
+                        <a class="btn btn-primary" role="button" [routerLink]="['/accountDetail',acc.id]">Edit</a>
+                        &nbsp;
+                        <a class="btn btn btn-danger" role="button" [routerLink]="['/accountDetail',acc.id]">Disable</a>                    
+                    </td>
+    
+                </tr>
+            </tbody>
+    
+        </table>
+    </div>
 
-            </tr>
-        </tbody>
-
-    </table>
+    
+   
 
 </div>
 
 
-<account-detail [account]="selectedAccount"></account-detail>
+<!-- <account-detail [account]="selectedAccount"></account-detail> -->
 
 
