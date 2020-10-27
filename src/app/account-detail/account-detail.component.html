@@ -32,34 +32,9 @@
                   <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
                   <div *ngIf="email.errors.required">Password is required</div>        
                   </div>
-              </div>
-
-              <div class="form-group">
-                <label for="role">Role</label>
-                <select formControlName="role"  [(ngModel)]="account.role">                    
-                    <option *ngFor="let role of Roles" [value] ="role">{{role}}
-                    </option>
-                </select>                                                      
-              </div>
-
-              <div class="form-group">
-                <label for="active">Active</label>active
-                <input 
-                    type="checkbox"
-                    formControlName="active"
-                    [(ngModel)]="account.active"
-                    class="form-control" />
-
-              </div>
-
-
-              
-
-
-
+              </div>    
             <button class="button" type="submit">Save</button>
             <button class="button" type="submit">Add New</button>
-            <input type="checkbox" >AAA
         </form>
     </div>    
 </div>

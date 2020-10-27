@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './../service/auth.service';
-import { User } from './../user';
-import { Router } from  '@angular/router';
-import { Observable} from 'rxjs';
+import { User } from '../core/models/user';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { UserService } from '../core/services/user.service';
 
 @Component({
   selector: 'account',
@@ -15,27 +15,24 @@ export class AccountComponent implements OnInit {
   selectedAccount: User;
   currentItem = 'Television';
 
-  constructor(private authService: AuthService) {  
+  constructor(private authService: UserService) {
 
   }
 
   ngOnInit(): void {
-      this.getAccount();
+    this.getAccount();
   }
+
   getAccount(): void {
-      this.authService.getAccounts()
-           .subscribe(data => {
-             this.accounts = data;                        
-             console.log(this.accounts);
-           })
+    this.authService.getAccounts()
+      .subscribe(data => {
+        this.accounts = data;
+        console.log(this.accounts);
+      })
   }
+
   onSelect(account: User): void {
     this.selectedAccount = account;
-    console.log(">>>>"+ account.id);
+    console.log(">>>>" + account.id);
   }
-
-  
-
-
-
 }
