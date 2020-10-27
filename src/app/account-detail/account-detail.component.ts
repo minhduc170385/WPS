@@ -65,6 +65,29 @@ export class AccountDetailComponent implements OnInit {
       return;
     }
     this.loading = true;
+    if (this.isAddMode) {
+      this.createUser();
+    } else {
+        this.updateUser();
+    }
   }
+  private createUser() {
+    // this.authService.createNewUser(this.accountForm.value)
+    //     .pipe(first())
+    //     .subscribe({
+    //         next: () => {
+                
+    //             this.router.navigate(['../'], { relativeTo: this.route });
+    //         },
+    //         error: error => {
+    //             //this.alertService.error(error);
+    //             this.loading = false;
+    //         }
+    //     });
+}
+private updateUser(){
+  
+}
+
 
 }
