@@ -5,4 +5,5 @@ export interface User {
     role: string;    
     password: string;
     active: boolean;
+    token: string;
 }

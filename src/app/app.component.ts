@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-declare var $:any;
+declare var $: any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,9 +8,9 @@ declare var $:any;
 export class AppComponent {
   title = 'wps';
   ngOnInit() {
-    $(".showtoast").click(function(){
-  $('.toast').toast('show');
-  })
-}
+    $(".showtoast").click(function () {
+      $('.toast').toast('show');
+    })
+  }
 
 }

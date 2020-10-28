@@ -1,11 +1,10 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { AuthService } from './../service/auth.service';
-import { User } from './../user';
+import { User } from '../core/models/user';
 //import { FormGroup, FormControl } from '@angular/forms';
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-
+import { UserService } from '../core/services/user.service';
 @Component({
   selector: 'account-detail',
   templateUrl: './account-detail.component.html',
@@ -20,7 +19,7 @@ export class AccountDetailComponent implements OnInit {
   submitted= false; 
   Roles: any =['admin','user'];
 
-  constructor(private authService: AuthService, 
+  constructor(private authService: UserService, 
               private router: Router,
               private route: ActivatedRoute) {    
    }
@@ -34,9 +33,7 @@ export class AccountDetailComponent implements OnInit {
       username: new FormControl('',[ 
         Validators.required, 
         Validators.minLength(3)]),
-      email: new FormControl('', Validators.required),
-      role: new FormControl('', Validators.required),
-      active: new FormControl(true,[])
+      email: new FormControl('', Validators.required)    
     });
 
     if (!this.isAddMode) {
@@ -52,10 +49,6 @@ export class AccountDetailComponent implements OnInit {
   get email(){
     return this.accountForm.get('email');    
   }
-  get role(){
-    return this.accountForm.get('role');    
-  }
-
   get formControls() { return this.accountForm.controls; }
 
   onSubmit() {
@@ -86,7 +79,7 @@ export class AccountDetailComponent implements OnInit {
     //     });
 }
 private updateUser(){
-  
+
 }
 
 
