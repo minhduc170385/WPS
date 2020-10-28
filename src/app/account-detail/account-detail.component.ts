@@ -1,10 +1,11 @@
+import { UserService } from './../core/services/user.service';
 import { Component, OnInit,Input } from '@angular/core';
 import { User } from '../core/models/user';
 //import { FormGroup, FormControl } from '@angular/forms';
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { UserService } from '../core/services/user.service';
+
 @Component({
   selector: 'account-detail',
   templateUrl: './account-detail.component.html',
@@ -33,14 +34,18 @@ export class AccountDetailComponent implements OnInit {
       username: new FormControl('',[ 
         Validators.required, 
         Validators.minLength(3)]),
-      email: new FormControl('', Validators.required)    
+      email: new FormControl('', Validators.required),
+      role: new FormControl('', Validators.required),
+      active: new FormControl(true,[])
     });
 
-    if (!this.isAddMode) {
-      this.authService.getUserById(this.id)
-          .pipe(first())
-          .subscribe(x => this.accountForm.patchValue(x));
-    }
+     if (!this.isAddMode) {
+       this.authService.getUserById(this.id)
+           .pipe(first())
+           .subscribe(x => {
+             console.log(">>>" + x.email);
+             this.accountForm.patchValue(x)});
+     }
   }
 
   get username(){
@@ -65,6 +70,11 @@ export class AccountDetailComponent implements OnInit {
     }
   }
   private createUser() {
+    console.log("ADD NEW >>>");
+    this.authService.create(this.accountForm.value).subscribe(res =>{
+      console.log("Create new success");
+      this.router.navigateByUrl('account');
+    })
     // this.authService.createNewUser(this.accountForm.value)
     //     .pipe(first())
     //     .subscribe({
@@ -79,7 +89,19 @@ export class AccountDetailComponent implements OnInit {
     //     });
 }
 private updateUser(){
-
+  console.log("Update >>>");
+   this.authService.updateUser(this.id, this.accountForm.value)
+   .pipe(first())
+   .subscribe({
+       next: () => {
+  //         this.alertService.success('User updated', { keepAfterRouteChange: true });
+  //         this.router.navigate(['../../'], { relativeTo: this.route });
+       },
+       error: error => {
+  //         this.alertService.error(error);
+           this.loading = false;
+       }
+   });
 }
 
 

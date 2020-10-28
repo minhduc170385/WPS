@@ -13,6 +13,7 @@ import { InMemoryDataService } from './core/services/in-memory-data.service';
 import { AccountComponent } from './account/account.component';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
 import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './account/profile/profile.component';
 
 @NgModule({
   declarations: [    
@@ -22,23 +23,14 @@ import { HomeComponent } from './home/home.component';
     HomeComponent, 
     MessagesComponent, 
     AccountComponent, 
-    AccountDetailComponent
+    AccountDetailComponent, ProfileComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule,
-    // RouterModule.forRoot([
-    //   { path: '', pathMatch: 'full', redirectTo: 'login'},
-    //   { path: 'login', component: LoginComponent },
-    //   { path: 'account', component: AccountComponent}, 
-    //   { path: 'accountDetail', component: AccountDetailComponent },
-    //   { path: 'accountDetail/:id', component: AccountDetailComponent },
-    //   // { path: 'admin', component: AdminComponent,canActivate: [AuthGuard] }
-    // ]),
-
+    HttpClientModule,   
     HttpClientInMemoryWebApiModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.

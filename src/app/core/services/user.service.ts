@@ -1,11 +1,13 @@
+import { User } from './../models/user';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable ,  BehaviorSubject ,  ReplaySubject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable ,  BehaviorSubject ,  ReplaySubject, of } from 'rxjs';
 
 import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
-import { User } from '../models/user';
-import { map ,  distinctUntilChanged } from 'rxjs/operators';
+import { catchError, map, tap ,  distinctUntilChanged } from 'rxjs/operators';
+
+
 
 
 @Injectable({
@@ -99,5 +101,48 @@ export class UserService {
       data => { return data; }
     ));
   }
+
+  getUserById(id: number): Observable<User> {
+    let url = `/users/${id}`;
+    return this.apiService.get(url)
+    .pipe(map( 
+      data => {        
+        return data;
+      }
+    ));
+  }
+
+  
+  apiURL = 'https://my-json-server.typicode.com/minhduc170385/User/User';  // URL to web api  
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+
+  }
+  create(userAccount: User) : Observable<User>
+  {       
+    console.log(">>>>" + userAccount.username + "  - " + userAccount.email);
+    return this.http.post<User>(this.apiURL + '/posts/', JSON.stringify(userAccount), this.httpOptions)
+    .pipe(
+      //catchError(this.errorHandler)
+    )
+  }
+
+  updateUser(id:number, userAccount: User) : Observable<User>{
+    console.log("number:" + id + "---- User:" + userAccount.username);
+    return this.http.put<User>(this.apiURL + '/posts/' + id, JSON.stringify(userAccount), this.httpOptions)
+    .pipe(
+      //catchError(this.errorHandler)
+    )
+  }
+  delete(id:number){
+    return this.http.delete<User>(this.apiURL + '/posts/' + id, this.httpOptions)
+    .pipe(
+      //catchError(this.errorHandler)
+    )
+
+  }
+
 
 }
