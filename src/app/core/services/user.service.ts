@@ -1,4 +1,3 @@
-import { User } from './../models/user';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable ,  BehaviorSubject ,  ReplaySubject, of } from 'rxjs';
@@ -6,8 +5,8 @@ import { Observable ,  BehaviorSubject ,  ReplaySubject, of } from 'rxjs';
 import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
 import { catchError, map, tap ,  distinctUntilChanged } from 'rxjs/operators';
-
-
+import { User } from '../models/user';
+import { ApiEndpoints } from '../utilities/Constants';
 
 
 @Injectable({
@@ -16,6 +15,8 @@ import { catchError, map, tap ,  distinctUntilChanged } from 'rxjs/operators';
 export class UserService {
   private currentUserSubject = new BehaviorSubject<User>({} as User);
   public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
+  // private currentUserSubject = new ReplaySubject<User>(1);
+  // public currentUser = this.currentUserSubject.asObservable();
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
@@ -31,9 +32,9 @@ export class UserService {
   populate() {
     // If JWT detected, attempt to get & store user's info
     if (this.jwtService.getToken()) {
-      this.apiService.get('/user')
+      this.apiService.get(`${ApiEndpoints.USERS}/1`)
       .subscribe(
-        data => this.setAuth(data.user),
+        data => this.setAuth(data),
         err => this.purgeAuth()
       );
     } else {
@@ -46,7 +47,7 @@ export class UserService {
     // Save JWT sent from server in localstorage
     this.jwtService.saveToken(user.token);
     // Set current user data into observable
-    this.currentUserSubject.next(user);
+    this.currentUserSubject.next(new User().deserialize(user));
     // Set isAuthenticated to true
     this.isAuthenticatedSubject.next(true);
   }
@@ -71,7 +72,7 @@ export class UserService {
     // ));
 
      // TODO: send the message _after_ fetching the hero
-     return this.apiService.get('/users/1')
+     return this.apiService.get(`${ApiEndpoints.USERS}/1`)
       .pipe(map( 
         data => {
           this.setAuth(data);
@@ -87,7 +88,7 @@ export class UserService {
   // Update the user on the server (email, pass, etc)
   update(user): Observable<User> {
     return this.apiService
-    .put('/user', { user })
+    .put(ApiEndpoints.USERS, { user })
     .pipe(map(data => {
       // Update the currentUser observable
       this.currentUserSubject.next(data.user);
@@ -96,7 +97,7 @@ export class UserService {
   }
 
   getAccounts(): Observable<User[]> {
-    return this.apiService.get("/users")
+    return this.apiService.get(ApiEndpoints.USERS)
     .pipe(map( 
       data => { return data; }
     ));

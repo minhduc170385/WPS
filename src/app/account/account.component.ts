@@ -12,8 +12,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class AccountComponent implements OnInit {
 
   accounts: User[];
-  selectedAccount: User;
-  currentItem = 'Television';
+  selectedAccount: User;  
 constructor(private authService: UserService, private route: ActivatedRoute) {  
   }
 

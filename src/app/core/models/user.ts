@@ -1,9 +1,25 @@
-export interface User {    
+import { Deserializable } from './deserializable';
+
+export class User implements Deserializable {    
     id: number;
     username: string;
     email: string;
-    role: string;    
+    role: Role;    
     password: string;
     active: boolean;
     token: string;
+
+    deserialize(input: any) {
+        Object.assign(this, input);
+        return this;
+    }
+
+    public isAdmin(): boolean {
+        return this.role == Role.admin;
+    };
+}
+
+export enum Role {
+    admin = "admin",
+    user = "user"
 }

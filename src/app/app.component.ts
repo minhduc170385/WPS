@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './core/services/user.service';
 declare var $: any;
 @Component({
   selector: 'app-root',
@@ -7,10 +8,13 @@ declare var $: any;
 })
 export class AppComponent {
   title = 'wps';
+
+  constructor (
+    private userService: UserService
+  ) {}
+
   ngOnInit() {
-    $(".showtoast").click(function () {
-      $('.toast').toast('show');
-    })
+    this.userService.populate();
   }
 
 }

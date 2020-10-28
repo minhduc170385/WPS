@@ -59,8 +59,7 @@
 
             <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="alert alert-danger">
               <div *ngIf="confirmPassword.errors.gte">Password is not match</div>
-              <div *ngIf="confirmPassword.errors.MatchPassword">Password not match</div>
-              
+              <div *ngIf="confirmPassword.errors.MatchPassword">Password not match</div>              
             </div>
 
           </div>

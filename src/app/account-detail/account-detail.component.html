@@ -1,5 +1,6 @@
 <h1 *ngIf="isAddMode">Add User</h1>
 <h1 *ngIf="!isAddMode">Edit User</h1>
+
 <form  [formGroup]="accountForm" (ngSubmit)="onSubmit()" style="width: 80%;margin-left: 30px;">
     <div class="form-group row col-md-4">        
         <label for="username">Username</label>
