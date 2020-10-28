@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from '../core/models/user';
 import { Router } from '@angular/router';
+import { AppRoutes } from '../core/utilities/Constants';
 
 @Component({
   selector: 'navbar',
@@ -14,6 +15,7 @@ export class NavbarComponent implements OnInit {
 
   currentUser: User
   isAuthenticated: boolean
+  isAdmin: boolean
 
   constructor(
     private userService: UserService,
@@ -22,21 +24,28 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.currentUser.subscribe(
-      data => this.currentUser = data,
+      data => {
+        this.currentUser = data
+        this.isAdmin = this.currentUser.isAdmin()
+      }
     )
 
     this.userService.isAuthenticated.subscribe(
-      data => this.isAuthenticated = data
+      data => {
+        this.isAuthenticated = data
+        if (!data) {
+          this.router.navigateByUrl(AppRoutes.LOGIN_SLASH)
+        }
+      }
     )
   }
 
   openProfile(): void {
-    this.router.navigateByUrl("/profile")
+    this.router.navigateByUrl(AppRoutes.ACCOUNT_SLASH)
   }
 
   logout(): void {
     this.userService.purgeAuth()
-    this.router.navigateByUrl("/login")
   }
 
 }

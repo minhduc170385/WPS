@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../core/services/user.service';
+import { AppRoutes } from '../core/utilities/Constants';
 
 @Component({
   selector: 'login',
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.user = data;
         if (this.user) {
           console.log("Login success");
-          this.router.navigateByUrl('/account');
+          this.router.navigateByUrl(AppRoutes.HOME);
         }
         else {
           console.log("FAIL >>>");

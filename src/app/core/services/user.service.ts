@@ -6,6 +6,7 @@ import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
 import { User } from '../models/user';
 import { map ,  distinctUntilChanged } from 'rxjs/operators';
+import { ApiEndpoints } from '../utilities/Constants';
 
 
 @Injectable({
@@ -29,9 +30,9 @@ export class UserService {
   populate() {
     // If JWT detected, attempt to get & store user's info
     if (this.jwtService.getToken()) {
-      this.apiService.get('/user')
+      this.apiService.get(`${ApiEndpoints.USERS}/1`)
       .subscribe(
-        data => this.setAuth(data.user),
+        data => this.setAuth(data),
         err => this.purgeAuth()
       );
     } else {
@@ -69,7 +70,7 @@ export class UserService {
     // ));
 
      // TODO: send the message _after_ fetching the hero
-     return this.apiService.get('/users/1')
+     return this.apiService.get(`${ApiEndpoints.USERS}/1`)
       .pipe(map( 
         data => {
           this.setAuth(data);
@@ -85,7 +86,7 @@ export class UserService {
   // Update the user on the server (email, pass, etc)
   update(user): Observable<User> {
     return this.apiService
-    .put('/user', { user })
+    .put(ApiEndpoints.USERS, { user })
     .pipe(map(data => {
       // Update the currentUser observable
       this.currentUserSubject.next(data.user);
@@ -94,7 +95,7 @@ export class UserService {
   }
 
   getAccounts(): Observable<User[]> {
-    return this.apiService.get("/users")
+    return this.apiService.get(ApiEndpoints.USERS)
     .pipe(map( 
       data => { return data; }
     ));
