@@ -3,7 +3,7 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
   </button>
-  <div *ngIf="isAuthenticated" class="collapse navbar-collapse" id="navbarNavDropdown">
+  <div *ngIf="(currentUser | json) != '{}'" class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav w-100">
           <li class="nav-item">
               <a class="nav-link" href="#">Uploading</a>
@@ -23,7 +23,7 @@
                   <a class="dropdown-item" href="#" (click)="logout()">Log out</a>                  
               </div>
           </li>
-          <li *ngIf="isAdmin" class="nav-item">
+          <li *ngIf="currentUser.isAdmin()" class="nav-item">
             <a class="nav-link" href="#">Setting</a>
         </li>
       </ul>

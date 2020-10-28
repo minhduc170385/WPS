@@ -15,6 +15,8 @@ import { ApiEndpoints } from '../utilities/Constants';
 export class UserService {
   private currentUserSubject = new BehaviorSubject<User>({} as User);
   public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
+  // private currentUserSubject = new ReplaySubject<User>(1);
+  // public currentUser = this.currentUserSubject.asObservable();
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
@@ -45,7 +47,7 @@ export class UserService {
     // Save JWT sent from server in localstorage
     this.jwtService.saveToken(user.token);
     // Set current user data into observable
-    this.currentUserSubject.next(user);
+    this.currentUserSubject.next(new User().deserialize(user));
     // Set isAuthenticated to true
     this.isAuthenticatedSubject.next(true);
   }

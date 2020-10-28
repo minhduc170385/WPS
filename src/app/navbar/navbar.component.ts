@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../core/services/user.service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { User } from '../core/models/user';
-import { Router } from '@angular/router';
+import { User, Role } from '../core/models/user';
+import { Router, RouterLink } from '@angular/router';
 import { AppRoutes } from '../core/utilities/Constants';
 
 @Component({
@@ -14,8 +14,6 @@ import { AppRoutes } from '../core/utilities/Constants';
 export class NavbarComponent implements OnInit {
 
   currentUser: User
-  isAuthenticated: boolean
-  isAdmin: boolean
 
   constructor(
     private userService: UserService,
@@ -25,14 +23,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.userService.currentUser.subscribe(
       data => {
+        // this.currentUser = new User().deserialize(data)
         this.currentUser = data
-        this.isAdmin = this.currentUser.isAdmin()
-      }
-    )
-
-    this.userService.isAuthenticated.subscribe(
-      data => {
-        this.isAuthenticated = data
       }
     )
   }

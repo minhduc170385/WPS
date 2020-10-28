@@ -1,4 +1,6 @@
-export class User {    
+import { Deserializable } from './deserializable';
+
+export class User implements Deserializable {    
     id: number;
     username: string;
     email: string;
@@ -7,12 +9,17 @@ export class User {
     active: boolean;
     token: string;
 
+    deserialize(input: any) {
+        Object.assign(this, input);
+        return this;
+    }
+
     public isAdmin(): boolean {
         return this.role == Role.admin;
     };
 }
 
-enum Role {
+export enum Role {
     admin = "admin",
     user = "user"
 }
