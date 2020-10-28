@@ -33,9 +33,6 @@ export class NavbarComponent implements OnInit {
     this.userService.isAuthenticated.subscribe(
       data => {
         this.isAuthenticated = data
-        if (!data) {
-          this.router.navigateByUrl(AppRoutes.LOGIN_SLASH)
-        }
       }
     )
   }
@@ -46,6 +43,7 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     this.userService.purgeAuth()
+    this.router.navigateByUrl(AppRoutes.LOGIN_SLASH)
   }
 
 }
