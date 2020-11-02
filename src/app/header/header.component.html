@@ -7,6 +7,30 @@
             <div class="col-md-auto vl header-text">
                 VA Clain Payment <br>Automation Testing Tool
             </div>
+            <div *ngIf="showMenu" class="col text-right header-menu-text">
+                Menu
+            </div>
+            <div *ngIf="showMenu" class="col-auto text-right">                
+                <div class="btn-group">
+                    <button type="button"  style="font-size: 20px;font-weight: bold;"
+                        class="btn dropdown-toggle" 
+                        data-toggle="dropdown" 
+                        data-display="static" 
+                        aria-haspopup="true" 
+                        aria-expanded="false">
+                      <!-- Menu&nbsp;&nbsp;&nbsp; -->
+                      
+                      <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg-right" style="width: 250px;">
+                      <button class="dropdown-item" type="button">Dashboard <i style="float: right;" class="fa fa-bars fa-1x" aria-hidden="true"></i></button>
+                      <button class="dropdown-item" type="button">Validation Tool  <i style="float: right;" class="fa fa-table" aria-hidden="true"></i></button>
+                      <button class="dropdown-item" type="button">Edit Profile <i style="float: right;" class="fa fa-user" aria-hidden="true"></i></button>
+                      <button [hidden]="!isAdmin" class="dropdown-item" type="button">User Administration <i style="float: right;" class="fa fa-users" aria-hidden="true"></i></button>
+                      <button class="dropdown-item" type="button">Sign Out <i style="float: right;" class="fa fa-sign-out" aria-hidden="true"></i></button>
+                    </div>                    
+                  </div>
+            </div>
             <!-- <div class="col header-text">
                 <p>VA Clain Payment <br>Automation Testing Tool</p>
                 

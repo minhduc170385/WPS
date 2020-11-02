@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessagesComponent } from './messages/messages.component';
 
@@ -22,8 +21,7 @@ import { SettingsModule } from './settings/settings.module';
 @NgModule({
   declarations: [    
     AppComponent,
-    LoginComponent,
-    NavbarComponent,   
+    LoginComponent,      
     HomeComponent, 
     MessagesComponent, 
     AccountComponent, 
