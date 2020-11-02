@@ -14,6 +14,8 @@ import { AccountComponent } from './account/account.component';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './account/profile/profile.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [    
@@ -23,7 +25,7 @@ import { ProfileComponent } from './account/profile/profile.component';
     HomeComponent, 
     MessagesComponent, 
     AccountComponent, 
-    AccountDetailComponent, ProfileComponent
+    AccountDetailComponent, ProfileComponent, HeaderComponent, FooterComponent
   ],
   imports: [
     BrowserModule,

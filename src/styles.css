@@ -1,2 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+body{
+    background-color: #f1f1f1;
+}
+
+.vl {
+  border-left: 2px solid red;
+  height: 50px;  
+}
+.header-contain{
+    width: 100%;
+    padding-top:10px;
+    padding-bottom: 5px;
+    background-color: white;
+}
+.header-contain-fluid{
+    background-color: white;
+}
+
+.logo{
+    height: 50px;
+}
+.header-text{
+    color: #007db6;
+    font-weight: 600;         
+}
