@@ -14,6 +14,8 @@ import { AccountComponent } from './account/account.component';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './account/profile/profile.component';
+import { ValidationModule } from './validation/validation.module';
+import { SettingsModule } from './settings/settings.module';
 
 @NgModule({
   declarations: [    
@@ -23,14 +25,19 @@ import { ProfileComponent } from './account/profile/profile.component';
     HomeComponent, 
     MessagesComponent, 
     AccountComponent, 
-    AccountDetailComponent, ProfileComponent
+    AccountDetailComponent, 
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule,   
+    HttpClientModule,
+    ValidationModule,
+    SettingsModule,
+    
+    
     HttpClientInMemoryWebApiModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
