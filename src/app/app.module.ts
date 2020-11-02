@@ -16,6 +16,8 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './account/profile/profile.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ValidationModule } from './validation/validation.module';
+import { SettingsModule } from './settings/settings.module';
 
 @NgModule({
   declarations: [    
@@ -25,14 +27,22 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent, 
     MessagesComponent, 
     AccountComponent, 
-    AccountDetailComponent, ProfileComponent, HeaderComponent, FooterComponent
+    AccountDetailComponent,
+    ProfileComponent, 
+    HeaderComponent, 
+    FooterComponent,    
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule,   
+    HttpClientModule,
+    ValidationModule,
+    SettingsModule,
+    
+    
     HttpClientInMemoryWebApiModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
