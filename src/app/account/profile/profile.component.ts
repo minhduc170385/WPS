@@ -23,7 +23,8 @@ export class ProfileComponent implements OnInit {
     console.log(this.item);
 
     this.frChangePassword = fb.group({
-      password: ['', Validators.required],
+      displayName: ['',[Validators.required, Validators.minLength(2)]],
+      newpassword: ['', [Validators.required, Validators.minLength(3)]],
       confirmPassword: ['', Validators.required]
     }, {
       validator: PasswordValidation.MatchPassword // your validation method
@@ -59,12 +60,15 @@ export class ProfileComponent implements OnInit {
   // }
 
   
-  get password(){
-    return this.frChangePassword.get('password');    
+  get newpassword(){
+    return this.frChangePassword.get('newpassword');    
   }
   get confirmPassword(){
     return this.frChangePassword.get('confirmPassword');    
   }
+   get displayName(){
+     return this.frChangePassword.get('displayName');
+   }
   get formControls() { return this.frChangePassword.controls; }
 
 
