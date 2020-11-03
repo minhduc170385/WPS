@@ -23,11 +23,11 @@
                       <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-lg-right" style="width: 250px;">
-                      <button class="dropdown-item" type="button">Dashboard <i style="float: right;" class="fa fa-bars fa-1x" aria-hidden="true"></i></button>
-                      <button class="dropdown-item" type="button">Validation Tool  <i style="float: right;" class="fa fa-table" aria-hidden="true"></i></button>
-                      <button class="dropdown-item" type="button">Edit Profile <i style="float: right;" class="fa fa-user" aria-hidden="true"></i></button>
-                      <button [hidden]="!isAdmin" class="dropdown-item" type="button">User Administration <i style="float: right;" class="fa fa-users" aria-hidden="true"></i></button>
-                      <button class="dropdown-item" type="button">Sign Out <i style="float: right;" class="fa fa-sign-out" aria-hidden="true"></i></button>
+                      <button class="dropdown-item" type="button" (click)="onMenuClick(menuEnum.DashBoard)">Dashboard <i style="float: right;" class="fa fa-bars fa-1x" aria-hidden="true"></i></button>
+                      <button class="dropdown-item" type="button" (click)="onMenuClick(menuEnum.ValidationTool)">Validation Tool  <i style="float: right;" class="fa fa-table" aria-hidden="true"></i></button>
+                      <button class="dropdown-item" type="button" (click)="onMenuClick(menuEnum.Profile)">Edit Profile <i style="float: right;" class="fa fa-user" aria-hidden="true"></i></button>
+                      <button [hidden]="!isAdmin" class="dropdown-item" type="button" (click)="onMenuClick(menuEnum.Administration)">User Administration <i style="float: right;" class="fa fa-users" aria-hidden="true"></i></button>
+                      <button class="dropdown-item" type="button" (click)="onMenuClick(menuEnum.SignOut)">Sign Out <i style="float: right;" class="fa fa-sign-out" aria-hidden="true"></i></button>
                     </div>                    
                   </div>
             </div>

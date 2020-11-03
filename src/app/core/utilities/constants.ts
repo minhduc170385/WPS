@@ -29,4 +29,6 @@ export abstract class AppRoutes {
     static readonly ACCOUNTDETAILWITHID_SLASH = `/${AppRoutes.ACCOUNTDETAILWITHID}`
     static readonly PROFILE = "profile"
     static readonly PROFILE_SLASH = `/${AppRoutes.PROFILE}`
+    static readonly NEW_VALIDATION = "newvalidation"
+    static readonly NEW_VALIDATION_SLASH = `/${AppRoutes.NEW_VALIDATION}`
 }

@@ -1,79 +1,163 @@
-<p>profile works!</p>
-<div class="container-sm">
+<div class="container main-body">
+  <div style="font-weight: bolder;font-size: 20px;text-align: center;font-family: Arial, Helvetica, sans-serif;padding-top: 20px;padding-bottom: 15px;">Edit profile</div>
+  <div class="container" style="padding-left: 50px; height: 400px;">
+    <form>
+      <div class="form-row">
+        <!-- User Name -->
+        <div class="form-group row col-6">
+          <label for="Username" class="col-sm-4 col-form-label">Username</label>
+          <div class="col-6">
+            <label class="col-form-label" id="Username">JohnSmit1</label>
+          </div>
+        </div>
+        <!-- User Id -->
+        <div class="form-group row col-6">
+          <label for="UserId" class="col-sm-4 col-form-label">User ID</label>
+          <div class="col-6">
+            <label class="col-form-label" id="UserId">1</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <!-- Display Name -->
+        <div class="form-group row col-6">
+          <label for="DisplayName" class="col-sm-4 col-form-label">Display Name</label>
+          <div class="col-6">
+            <input type="text" class="form-control" id="displayName">
+          </div>
+        </div>
+        <!-- Email Address -->
+        <div class="form-group row col-6">
+          <label for="email" class="col-sm-4 col-form-label">Email Address</label>
+          <div class="col-6">
+            <label class="col-form-label" id="email">JohnSmit1@wpsic.com</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <!-- New Password -->
+        <div class="form-group row col-6">
+          <label for="newPassword" class="col-sm-4 col-form-label">New Password</label>
+          <div class="col-6">
+            <input type="text" class="form-control" id="newPassword">
+          </div>
+        </div>
+        <!-- User Role -->
+        <div class="form-group row col-6">
+          <label for="role" class="col-sm-4 col-form-label">User Role</label>
+          <div class="col-6">
+            <label class="col-form-label" id="role">User</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <!-- New Password -->
+        <div class="form-group row col-6">
+          <label for="newPassword" class="col-sm-4 col-form-label">Confirm Password</label>
+          <div class="col-6">
+            <input type="text" class="form-control" id="confirmPassword">
+          </div>
+        </div>
+        <!-- Account Status -->
+        <div class="form-group row col-6">
+          <label for="status" class="col-sm-4 col-form-label">Account Status</label>
+          <div class="col-6">
+            <label class="col-form-label" id="status">Active</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-between" style="margin-top: 90px;">
+        <div class="col-8">
+          
+        </div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-secondary btn-lg float-right">Save</button>
+          
+        </div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-secondary btn-lg">Cancel</button>
+        </div>
+      </div>
+
+    </form>
+    <div></div>
+  </div>
+
+
+  <!-- <div class="form-row">
+   
+
+  <div class="container-sm" style="margin-top: 20px;">
     <div class="row">
       <div class="col-sm font-weight-bold">
         User Id
       </div>
       <div class="col-sm">
         {{item.username}}
-      </div>      
+      </div>
     </div>
     <div class="row">
-        <div class="col-sm font-weight-bold">
-          Email
-        </div>
-        <div class="col-sm">
-          {{item.email}}
-        </div>      
+      <div class="col-sm font-weight-bold">
+        Email
       </div>
-      <div class="row">
-        <div class="col-sm font-weight-bold">
-          Role
-        </div>
-        <div class="col-sm">
-          {{item.role}}
-        </div>      
-      </div>     
-      <div class="row">
-        <hr>
+      <div class="col-sm">
+        {{item.email}}
       </div>
+    </div>
+    <div class="row">
+      <div class="col-sm font-weight-bold">
+        Role
+      </div>
+      <div class="col-sm">
+        {{item.role}}
+      </div>
+    </div>
+    <div class="row">
+      <hr>
+    </div>
   </div>
   <div class="container-sm">
-    <form  [formGroup]="frChangePassword">
-        <div class="form-group row">
-          <label for="password" class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-2">
-            <input type="password" 
-              formControlName="password"
-              class="form-control" 
-              id="password" 
-              placeholder="Password">
+    <form [formGroup]="frChangePassword">
+      <div class="form-group row">
+        <label for="password" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-2">
+          <input type="password" formControlName="password" class="form-control" id="password" placeholder="Password">
 
-            <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
-              <div *ngIf="password.errors.required">Password is required</div>
-              <div *ngIf="password.errors.minlength">Password min length {{password.errors.minlength.requiredLength}}</div>
-              
-              <!-- <div *ngIf="username.errors.cannotContainSpace">Username Cannot contain space</div> -->
+          <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">Password min length {{password.errors.minlength.requiredLength}}
             </div>
 
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="confirmPassword" class="col-sm-2 col-form-label">Re-Password</label>
-          <div class="col-sm-2">
-            <input type="password" 
-              class="form-control" 
-              id="confirmPassword" 
-              formControlName="confirmPassword"
-              placeholder="Password">
-
-            <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="alert alert-danger">
-              <div *ngIf="confirmPassword.errors.gte">Password is not match</div>
-              <div *ngIf="confirmPassword.errors.MatchPassword">Password not match</div>              
-            </div>
-
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="col-sm-2">
-            <button
-            type="submit" 
-            class="btn btn-primary font-weight-bold">Save</button>
-          </div>
-          
-          
             
+          </div>
+
         </div>
+      </div>
+      <div class="form-group row">
+        <label for="confirmPassword" class="col-sm-2 col-form-label">Re-Password</label>
+        <div class="col-sm-2">
+          <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+            placeholder="Password">
+
+          <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="alert alert-danger">
+            <div *ngIf="confirmPassword.errors.gte">Password is not match</div>
+            <div *ngIf="confirmPassword.errors.MatchPassword">Password not match</div>
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary font-weight-bold">Save</button>
+        </div>
+
+
+
+      </div>
     </form>
   </div>
-  
+</div> -->

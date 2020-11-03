@@ -6,10 +6,12 @@ import { LoadingComponent } from './loading/loading.component';
 import { ValidationComponent } from './validation/validation.component';
 import { MatchingComponent } from './matching/matching.component';
 import { PaymentComponent } from './payment/payment.component';
+import { NewValidationComponent } from './new-validation/new-validation.component';
+import { DrapDropDirective } from './new-validation/drap-drop.directive';
 
 
 @NgModule({
-  declarations: [ValidationComponent, LoadingComponent, MatchingComponent, PaymentComponent],
+  declarations: [ValidationComponent, LoadingComponent, MatchingComponent, PaymentComponent, NewValidationComponent, DrapDropDirective],
   imports: [
     CommonModule,
     ValidationRoutingModule
