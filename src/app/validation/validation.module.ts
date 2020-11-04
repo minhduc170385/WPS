@@ -8,13 +8,17 @@ import { MatchingComponent } from './matching/matching.component';
 import { PaymentComponent } from './payment/payment.component';
 import { NewValidationComponent } from './new-validation/new-validation.component';
 import { DrapDropDirective } from './new-validation/drap-drop.directive';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [ValidationComponent, LoadingComponent, MatchingComponent, PaymentComponent, NewValidationComponent, DrapDropDirective],
   imports: [
     CommonModule,
-    ValidationRoutingModule
+    ValidationRoutingModule,
+    NgbModule,
+    FormsModule,
   ]
 })
 export class ValidationModule { }
