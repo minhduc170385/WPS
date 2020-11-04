@@ -14,7 +14,7 @@ import { AppRoutes } from '../core/utilities/Constants';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isSubmitted = false;
-  user: User;
+  user: User;  
 
   constructor(private authService: UserService,
     private router: Router,

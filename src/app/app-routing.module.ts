@@ -13,7 +13,7 @@ import { ValidationModule } from './validation/validation.module';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: AppRoutes.HOME},
-  { path: AppRoutes.LOGIN, component: LoginComponent, canActivate: [NoAuthGuard] },
+  { path: AppRoutes.LOGIN, component: LoginComponent, canActivate: [NoAuthGuard],data:{showHeader:false} },
   { path: AppRoutes.HOME, component: HomeComponent, canActivate: [AuthGuard] },
   { path: AppRoutes.SETTINGS, loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
   { path: AppRoutes.VALIDATION, loadChildren: () => import('./validation/validation.module').then(m => m.ValidationModule) },

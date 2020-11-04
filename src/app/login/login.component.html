@@ -1,13 +1,17 @@
-<div class="container" style="width: 400px;margin-top: 300px;">    
-<form  [formGroup]="loginForm" (ngSubmit)="login()">
-    <div class="form-group">
-      <label for="username">Username</label>
+<div class="container"></div>
+
+<div class="container login-body">
+<p class="login-title">Login</p>
+<p class="login-title-sub">Enter your username and password to access the tesing tool</p>
+
+<form  [formGroup]="loginForm" (ngSubmit)="login()" class="form-login">
+    <div class="form-group">      
       <input 
             formControlName="username"
             type="text"            
             id="username"
             class="form-control"
-            placeholder="Enter username"
+            placeholder="Username"
             />           
 
         <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
@@ -22,8 +26,7 @@
                     ngModel            -->
       
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
+    <div class="form-group">      
       <input type="password" 
              formControlName="password"
              class="form-control" 
@@ -33,6 +36,12 @@
         <div *ngIf="password.errors.required">Password is required</div>        
         </div>
     </div>    
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="row justify-content-center">
+      <button type="submit" class="btn btn-lg btn-warning login-btn">Sign In</button>
+    </div>
+    <div class="row justify-content-center" style="height: 100px;">
+      <p class ="login-title-sub" style="padding-top: 40px;">Need help? Contact the <a>System Administrator</a> for support</p>
+    </div>
+    
   </form>
 </div>
