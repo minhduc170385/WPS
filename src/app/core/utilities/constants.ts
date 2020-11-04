@@ -4,6 +4,8 @@ export abstract class Constants {
 
 export abstract class ApiEndpoints {
     static readonly USERS = "/users"
+    static readonly VALIDATIONS = "/validations"
+    static readonly DATATYPES = "/datatypes"
 }
 
 export abstract class AppRoutes {

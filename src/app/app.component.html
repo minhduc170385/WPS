@@ -1,12 +1,10 @@
 
 <div *ngIf="showHeader; else elseBlock">
     <header></header>
-    <div class="container" >
-        <!-- *ngIf="showHeader" -->        
+    <div class="app-container">    
         <router-outlet></router-outlet>
-        <app-messages></app-messages>
-        <footer></footer>
     </div>
+    <footer></footer>
 </div>
 
 <ng-template #elseBlock>

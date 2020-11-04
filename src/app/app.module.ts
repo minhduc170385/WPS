@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MessagesComponent } from './messages/messages.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './core/services/in-memory-data.service';
@@ -23,7 +22,6 @@ import { SettingsModule } from './settings/settings.module';
     AppComponent,
     LoginComponent,      
     HomeComponent, 
-    MessagesComponent, 
     AccountComponent, 
     AccountDetailComponent,
     ProfileComponent, 
@@ -39,7 +37,6 @@ import { SettingsModule } from './settings/settings.module';
     HttpClientModule,
     ValidationModule,
     SettingsModule,
-    
     
     HttpClientInMemoryWebApiModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
