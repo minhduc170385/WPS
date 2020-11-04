@@ -1,4 +1,4 @@
-import { User } from '../core/models/user';
+import { User } from '../core/models/user.model';
 import { UsernameValidators } from './username.validators';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';

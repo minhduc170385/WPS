@@ -1,0 +1,6 @@
+.matching_page {
+    border-style: hidden solid  solid solid;
+    border-width: 0.5px;
+    height: 100%;
+    overflow: auto !important;
+} 

@@ -1,11 +1,8 @@
 .validating-tool-name {
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
 }
+
 .validation-page {
-    height: 100%;
-}
-.container {
     height: 100%;
 }

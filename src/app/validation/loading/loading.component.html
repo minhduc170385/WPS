@@ -3,20 +3,20 @@
         <button type="button" class="btn btn-primary">New Validation</button>
     </div>
     <div class="container">
-        <form>
-            <fieldset class="scheduler-border">
-                <legend class="scheduler-border">Report Search</legend>
+        <form [formGroup]="searchForm">
+            <fieldset class="search-form-border">
+                <legend class="search-form-border">Report Search</legend>
                 <div class="form-row">
                     <div class="col-4">
                         <div class="form-group row">
-                            <label for="startTime"
-                                class="search-form-label col-form-label col-form-label-sm">From</label>
+                            <label for="fromDate" class="search-form-label col-form-label col-form-label-sm">From</label>
+
                             <div class="search-form-input input-group">
-                                <input class="form-control form-control-sm" placeholder="MM/DD/YYYY" name="dp"
-                                    [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                                <input class="form-control form-control-sm" placeholder="MM/DD/YYYY" name="dp" formControlName="fromDate" ngbDatepicker #dbFrom="ngbDatepicker">
+
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
-                                        type="button"></button>
+                                    <button class="btn btn-outline-secondary calendar" (click)="dbFrom.toggle()" type="button">
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -24,13 +24,14 @@
 
                     <div class="col-sm-4">
                         <div class="form-group row">
-                            <label for="endTime" class="search-form-label col-form-label col-form-label-sm">To</label>
+                            <label for="toDate" class="search-form-label col-form-label col-form-label-sm">To</label>
+
                             <div class="search-form-input input-group">
-                                <input class="form-control form-control-sm" placeholder="MM/DD/YYYY" name="dp"
-                                    [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                                <input class="form-control form-control-sm" placeholder="MM/DD/YYYY" name="dp" formControlName="toDate" ngbDatepicker #dbTo="ngbDatepicker">
+
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
-                                        type="button"></button>
+                                    <button class="btn btn-outline-secondary calendar" (click)="dbTo.toggle()" type="button">
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -40,10 +41,9 @@
                 <div class="form-row">
                     <div class="col-sm-4">
                         <div class="form-group row">
-                            <label for="status"
-                                class="search-form-label col-form-label col-form-label-sm">Status</label>
+                            <label for="status" class="search-form-label col-form-label col-form-label-sm">Status</label>
                             <div class="search-form-input">
-                                <select id="inputState" class="form-control form-control-sm">
+                                <select id="status" class="form-control form-control-sm" formControlName="status">
                                     <option selected>-Select-</option>
                                     <option *ngFor="let status of statuses">{{status}}</option>
                                 </select>
@@ -55,7 +55,7 @@
                             <label for="dataType" class="search-form-label col-form-label col-form-label-sm">Data
                                 Type</label>
                             <div class="search-form-input">
-                                <select id="dataType" class="form-control form-control-sm">
+                                <select id="dataType" class="form-control form-control-sm" formControlName="dataType">
                                     <option selected>-Select-</option>
                                     <option *ngFor="let type of dataTypes">{{type.name}}</option>
                                 </select>
@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="col-3">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <button type="submit" class="btn btn-primary" (click)="search()" [disabled]="!isValid()">Search</button>
                     </div>
                 </div>
 
@@ -72,8 +72,14 @@
         </form>
     </div>
 
-    <!-- <div class="container">
-        <table class="table table-striped">
+    <div class="text-center" [hidden]="!isLoading">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <div class="container" [hidden]="isLoading">
+        <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Data Type</th>
@@ -87,21 +93,20 @@
                 <tr *ngFor="let validation of validations">
                     <td>{{ validation.dataType.name }}</td>
                     <td>
-                        <a href="#" class="stretched-link">{{ validation.inputFileName }}</a>
+                        <span><a href="validation.inputFilePath">{{ validation.inputFileName }}</a></span>
                     </td>
                     <td>{{ validation.runTime }}</td>
                     <td>{{ validation.status }}</td>
                     <td>
-                        <a href="#" class="stretched-link">Report</a>
+                        <a href="#">Report</a>
                     </td>
                 </tr>
             </tbody>
         </table>
 
         <div class="d-flex justify-content-center p-2">
-            <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                (pageChange)="refreshValidations()">
+            <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="setPageTo()">
             </ngb-pagination>
         </div>
-    </div> -->
+    </div>
 </div>

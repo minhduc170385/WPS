@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./validation.component.css']
 })
 export class ValidationComponent implements OnInit {
+  
+  active = 1;
 
   constructor() { }
 
