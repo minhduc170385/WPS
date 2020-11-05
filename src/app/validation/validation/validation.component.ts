@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { max } from 'rxjs/operators';
 import { AppRoutes } from 'src/app/core/utilities/Constants';
 
 @Component({
@@ -9,16 +10,26 @@ import { AppRoutes } from 'src/app/core/utilities/Constants';
 })
 export class ValidationComponent implements OnInit {
   
-  active = 1;
- 
+  activeLinkIndex = 0;
+  
   links = [
-    { title: 'Data Loads', fragment: 'loading', link: AppRoutes.VALIDATING_LOADING  },
-    { title: 'Data Matching', fragment: 'matching', link: AppRoutes.VALIDATING_MATCHING },
-    { title: 'Payment & Invoicing', fragment: 'payement', link: AppRoutes.VALIDATING_PAYMENT }
+    { title: 'Data Loads', link: AppRoutes.VALIDATING_LOADING, index: 0 },
+    { title: 'Data Matching', link: AppRoutes.VALIDATING_MATCHING, index: 1 },
+    { title: 'Payment & Invoicing', link: AppRoutes.VALIDATING_PAYMENT, index: 2 }
   ];
   
-  constructor(public route: ActivatedRoute) { }
+  constructor(public route: ActivatedRoute, public router: Router) { }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {  
+    this.router.events.subscribe((res) => {
+      this.setActiveLinkIndex()
+    });
+    this.setActiveLinkIndex()
+  }
+
+  setActiveLinkIndex() {
+    this.activeLinkIndex = Math.max(this.links.indexOf(this.links.find(tab => tab.link === this.router.url.split('/').pop())), 0);
+    console.log(this.router.url.split('/').pop()+ " " + this.activeLinkIndex)
+  }
 
 }

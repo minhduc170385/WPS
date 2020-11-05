@@ -1,7 +1,7 @@
 <div class="container">
     <h2 class="validating-tool-name">Validating tool</h2>
-    <ul ngbNav [activeId]="route.fragment | async" class="nav-tabs">
-        <li [ngbNavItem]="link.fragment" *ngFor="let link of links">
+    <ul ngbNav [activeId]="activeLinkIndex" class="nav-tabs">
+        <li [ngbNavItem]="link.index" *ngFor="let link of links">
             <a ngbNavLink [routerLink]="link.link">{{ link.title }}</a>
         </li>
     </ul>
