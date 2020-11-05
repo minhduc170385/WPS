@@ -1,4 +1,4 @@
-<div class="container border">
+<div class="container border loading-page">
     <div class="container py-3">
         <button type="button" class="btn btn-primary" (click)="newValidation()">New Validation</button>
     </div>
@@ -107,7 +107,7 @@
         </table>
 
         <div class="container paging">
-            <label style="margin-left: 100px;">{{ totalRecord + " " + (totalRecord > 1 ? "records" : "record") + " found"}}</label>
+            <label style="margin-left: 100px; margin-top: -10px;">{{ totalRecord + " " + (totalRecord > 1 ? "records" : "record") + " found"}}</label>
             <div class="d-flex justify-content-center mt-n5">
                 <ngb-pagination [collectionSize]="totalRecord" [(page)]="page" [pageSize]="pageSize" (pageChange)="setPageTo()">
                 </ngb-pagination>

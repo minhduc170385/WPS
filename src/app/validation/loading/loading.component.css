@@ -1,16 +1,12 @@
 .loading-page {
     border-style: hidden solid solid solid;
-    border-width: 0.5px;
-    height: 100%;
-    margin-top: -8px;
+    height: 83.5%;
 }
 
 fieldset.search-form-border {
-    border: 1px groove #ddd !important;
+    border: 0.5px solid gray !important;
     padding: 0 1.4em 1.4em 1.4em !important;
     margin: 0 0 1.5em 0 !important;
-    -webkit-box-shadow: 0px 0px 0px 0px #000;
-    box-shadow: 0px 0px 0px 0px #000;
 }
 
 legend.search-form-border {
@@ -38,7 +34,7 @@ legend.search-form-border {
     position: absolute;
     margin-top: 0px;
     margin-left: -120px;
-    bottom: -100px;
+    bottom: -90px;
 }
 
 .inprogress {

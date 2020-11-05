@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
       }
       case MenuAction.ValidationTool:{
           console.log(item);
-          this.router.navigateByUrl(AppRoutes.VALIDATING_LOADING_SLASH);
+          this.router.navigateByUrl(AppRoutes.VALIDATION_SLASH);
           break;
       }
       case MenuAction.Administration:{
