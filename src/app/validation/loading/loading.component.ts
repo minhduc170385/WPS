@@ -5,7 +5,8 @@ import { ValidationService } from 'src/app/core/services/validation.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ValidationListConfig } from 'src/app/core/models/validation-list-config.model';
 import { param } from 'jquery';
-
+import { AppRoutes, Constants } from 'src/app/core/utilities/Constants';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-loading',
   templateUrl: './loading.component.html',
@@ -19,7 +20,8 @@ export class LoadingComponent implements OnInit {
 
   page = 1;
   pageSize = 4;
-  collectionSize = 3;
+  totalRecord = 3;
+  reportDateFormat = Constants.DATE_FORMAT
 
   isLoading = true
 
@@ -29,7 +31,9 @@ export class LoadingComponent implements OnInit {
 
   constructor(
     private validationService: ValidationService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
 
     this.searchForm = this.fb.group({
@@ -65,7 +69,6 @@ export class LoadingComponent implements OnInit {
     this.queryValidations(this.query)
   }
 
-
   search() {
     this.query = {
       step : "",
@@ -85,5 +88,9 @@ export class LoadingComponent implements OnInit {
       }
       return false
     }
+  }
+
+  newValidation() {
+    this.router.navigate([AppRoutes.NEW_VALIDATION], { relativeTo: this.activatedRoute});
   }
 }

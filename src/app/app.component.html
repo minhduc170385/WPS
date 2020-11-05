@@ -1,14 +1,13 @@
-
-<div *ngIf="showHeader; else elseBlock">
+<div class="h-100" *ngIf="showHeader; else elseBlock">
     <header></header>
-    <div class="container">    
+    <div class="app-container">
         <router-outlet></router-outlet>
     </div>
     <footer></footer>
 </div>
 
 <ng-template #elseBlock>
-    <div class="header-contain-fluid" >
+    <div class="header-contain-fluid">
         <div class="container header-contain">
             <div class="row justify-content-md-center">
                 <div class="col-md-auto logo">
@@ -16,22 +15,15 @@
                 </div>
                 <div class="col-md-auto vl header-text">
                     VA Clain Payment <br>Automation Testing Tool
-                </div>                
-            </div>    
-        </div>        
-        
-    </div>    
-    
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <div class="container-fluid" style="background-color: white;margin-top:-16px;  min-height: 92vh;">
-    <hr>             
+        <hr>
         <router-outlet></router-outlet>
-        <app-messages></app-messages>
         <footer></footer>
     </div>
 </ng-template>
-
-
-
-<!-- <div class="container-fluid" *ngIf="!showHeader">
-        <login></login>
-</div> -->

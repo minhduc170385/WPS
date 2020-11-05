@@ -31,3 +31,30 @@ legend.search-form-border {
     width: 160px;
     margin-left: 10px;
 }
+
+.paging {
+    position: absolute;
+    margin-top: 0px;
+    bottom: -100px;
+    background-color: aqua;
+}
+
+.bottom {
+    position: absolute;
+    margin-top: 0px;
+    margin-left: -45px;
+    bottom: -100px;
+    background-color: aqua;
+}
+
+.inprogress {
+    color: gray;
+}
+
+.failed {
+    color: red
+}
+
+.passed {
+    color: green;
+}

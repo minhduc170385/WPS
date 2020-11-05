@@ -29,7 +29,8 @@ const routes: Routes = [
       },
       {
         path: AppRoutes.NEW_VALIDATION,
-        component: NewValidationComponent
+        component: NewValidationComponent,
+        canActivate: [AuthGuard],
       }
     ]
   }

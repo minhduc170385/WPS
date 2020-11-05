@@ -10,6 +10,8 @@ import { NewValidationComponent } from './new-validation/new-validation.componen
 import { DrapDropDirective } from './new-validation/drap-drop.directive';
 import { NgbModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { CustomDateParserFormatter } from './custom-date-parser';
 
 
 @NgModule({
@@ -21,6 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgbNavModule,
     ReactiveFormsModule,
     FormsModule,
-  ]
+  ],
+  providers: [
+    {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
+  ],
 })
 export class ValidationModule { }
