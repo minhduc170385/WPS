@@ -6,6 +6,21 @@
                 <a ngbNavLink>Data Loads</a>
                 <ng-template ngbNavContent>
                     <app-loading></app-loading>
+
+                    <!-- <div class="container" *ngIf="!showNewValidation">
+                        <button type="button" (click)="onNewValidationClick()" class="btn btn-primary">New Validation</button>
+                    </div>
+
+                    <app-loading *ngIf="!showNewValidation"></app-loading>
+                    <new-validation *ngIf="showNewValidation"></new-validation> -->
+
+                    <!-- <div *ngIf="!showNewValidation; else elseNewValidation">
+                        <app-loading></app-loading>
+                    </div>                    
+                    <ng-template #elseNewValidation>
+                        <new-validation></new-validation>
+                    </ng-template> -->
+                    
                 </ng-template>
             </li>
             <li [ngbNavItem]="2">
@@ -23,5 +38,7 @@
         </ul>
 
         <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+
     </div>
 </div>

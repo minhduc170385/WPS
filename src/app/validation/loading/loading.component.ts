@@ -1,3 +1,4 @@
+import { NewValidationComponent } from './../new-validation/new-validation.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbDateStruct, NgbCalendar, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { DataType, Status, Validation } from 'src/app/core/models/validation.model';
@@ -5,6 +6,8 @@ import { ValidationService } from 'src/app/core/services/validation.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ValidationListConfig } from 'src/app/core/models/validation-list-config.model';
 import { param } from 'jquery';
+import { Router, RouterLink,ActivatedRoute,NavigationEnd } from '@angular/router';
+import { AppRoutes } from '../../core/utilities/Constants';
 
 @Component({
   selector: 'app-loading',
@@ -26,8 +29,11 @@ export class LoadingComponent implements OnInit {
   searchForm: FormGroup
 
   query: ValidationListConfig 
-
+  
+  //showNewValidation = false
   constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private validationService: ValidationService,
     private fb: FormBuilder
   ) {
@@ -43,6 +49,7 @@ export class LoadingComponent implements OnInit {
   ngOnInit() {
     this.queryValidations()
     this.getDataTypes()
+   
   }
 
   queryValidations(params: ValidationListConfig=null) {
@@ -85,5 +92,5 @@ export class LoadingComponent implements OnInit {
       }
       return false
     }
-  }
+  } 
 }

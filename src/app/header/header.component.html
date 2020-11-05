@@ -7,7 +7,10 @@
             <div class="col-md-auto vl header-text">
                 VA Clain Payment <br>Automation Testing Tool
             </div>
-            <div *ngIf="showMenu" class="col text-right header-menu-text">
+            <div *ngIf="showMenu" class="col text-right header-profile-menu-text">
+                {{currentUser.displayname}}
+            </div>
+            <div *ngIf="showMenu" class="col-auto text-right header-menu-text">                
                 Menu
             </div>
             <div *ngIf="showMenu" class="col-auto text-right">                

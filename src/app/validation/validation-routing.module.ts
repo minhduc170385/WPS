@@ -17,7 +17,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: LoadingComponent
+        component: LoadingComponent,
+        data:{showNewValidation:false}
       },
       {
         path: AppRoutes.VALIDATING_MATCHING,

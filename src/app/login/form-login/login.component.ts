@@ -1,10 +1,10 @@
-import { User } from '../core/models/user.model';
-import { UsernameValidators } from './username.validators';
+import { User } from '../../core/models/user.model';
+import { UsernameValidators } from './../username.validators';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../core/services/user.service';
-import { AppRoutes } from '../core/utilities/Constants';
+import { UserService } from '../../core/services/user.service';
+import { AppRoutes } from '../../core/utilities/Constants';
 
 @Component({
   selector: 'login',

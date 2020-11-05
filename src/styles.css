@@ -67,6 +67,12 @@ body {
     font-weight: bolder;
     margin-right: -25px;
 }
+.header-profile-menu-text {
+    font-size: 17px;
+    font-weight: bold;
+    margin-top:13px;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 .main-body {
     background-color: white;
