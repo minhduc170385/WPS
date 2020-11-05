@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject, ReplaySubject, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpParams } from '@angular/common/http';
 
 import { ApiService } from './api.service';
-import { JwtService } from './jwt.service';
-import { catchError, map, tap, distinctUntilChanged } from 'rxjs/operators';
-import { User } from '../models/user';
+import {  map } from 'rxjs/operators';
 import { ApiEndpoints } from '../utilities/Constants';
-import { DataType, Validation } from '../models/validation';
+import { DataType, Validation } from '../models/validation.model';
+import { ValidationListConfig } from '../models/validation-list-config.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +19,20 @@ export class ValidationService {
     private http: HttpClient,
   ) { }
 
-  getValidations(): Observable<Validation[]> {
-    return this.apiService.get(ApiEndpoints.VALIDATIONS)
+  getValidations(config: ValidationListConfig=null): Observable<Validation[]> {
+    const params = {};
+
+    if (config != null) {
+      Object.keys(config)
+      .forEach((key) => {
+        params[key] = config[key];
+      });
+    }
+
+    return this.apiService.get(ApiEndpoints.VALIDATIONS, new HttpParams({ fromObject: params }))
       .pipe(map(
         data => { return data; }
-      ));
+    ));
   }
 
   getDataTypes(): Observable<DataType[]> {

@@ -1,8 +1,8 @@
-import { User } from '../models/user';
+import { User } from '../models/user.model';
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { RouterLink } from '@angular/router';
-import { DataType, Status, Step } from '../models/validation';
+import { DataType, Status, Step } from '../models/validation.model';
 
 
 @Injectable({

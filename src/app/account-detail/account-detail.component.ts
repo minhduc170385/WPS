@@ -1,6 +1,6 @@
 import { UserService } from './../core/services/user.service';
 import { Component, OnInit,Input } from '@angular/core';
-import { User } from '../core/models/user';
+import { User } from '../core/models/user.model';
 //import { FormGroup, FormControl } from '@angular/forms';
 import {FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';

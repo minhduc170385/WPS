@@ -1,45 +1,27 @@
 <div class="validation-page">
     <h2 class="validating-tool-name">Validating tool</h2>
-    <div class="container">
-        <ngb-tabset justify="fill">
-            <ngb-tab title="Data Loads">
-            <ng-template ngbTabContent>
-                <app-loading></app-loading>
-            </ng-template>
-            </ngb-tab>
-            <ngb-tab title="Data Matching">
-            <ng-template ngbTabContent>
-                <app-matching></app-matching>
-            </ng-template>
-            </ngb-tab>
-            <ngb-tab title="Payment & Invoicing">
-            <ng-template ngbTabContent>
-                <app-payment></app-payment>
-            </ng-template>
-            </ngb-tab>
-        </ngb-tabset>
+    <div class="panel panel-default">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+            <li [ngbNavItem]="1">
+                <a ngbNavLink>Data Loads</a>
+                <ng-template ngbNavContent>
+                    <app-loading></app-loading>
+                </ng-template>
+            </li>
+            <li [ngbNavItem]="2">
+                <a ngbNavLink>Data Matching</a>
+                <ng-template ngbNavContent>
+                    <app-matching></app-matching>
+                </ng-template>
+            </li>
+            <li [ngbNavItem]="3">
+                <a ngbNavLink>Payment & Invoicing</a>
+                <ng-template ngbNavContent>
+                    <app-payment></app-payment>
+                </ng-template>
+            </li>
+        </ul>
+
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
     </div>
-    
-    <!-- <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-      <li [ngbNavItem]="Data Loads">
-        <a ngbNavLink>One</a>
-        <ng-template ngbNavContent>
-          <app-loading></app-loading>
-        </ng-template>
-      </li>
-      <li [ngbNavItem]="Data Matching">
-        <a ngbNavLink>Two</a>
-        <ng-template ngbNavContent>
-          <app-matching></app-matching>
-        </ng-template>
-      </li>
-      <li [ngbNavItem]="Payment & Invoicing">
-        <a ngbNavLink>Three</a>
-        <ng-template ngbNavContent>
-          <app-payment></app-payment>
-        </ng-template>
-      </li>
-    </ul>
-    
-    <div [ngbNavOutlet]="nav" class="mt-2"></div> -->
 </div>

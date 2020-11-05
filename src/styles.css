@@ -1,41 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import '~bootstrap/dist/css/bootstrap.min.css';
-html, body {
+html,
+body {
     background-color: #f1f1f1;
     height: 100%;
-    margin: 0;
+}
+
+.tabset,
+.tab-content,
+.tab-pane,
+.tabbable {
+    height: 95%;
+}
+
+.panel-body .tab-content {
+    height: 100%;
+    min-height: 100%;
+}
+
+.panel-body {
+    height: 100%;
+    min-height: 100%;
+}
+
+.panel {
+    height: 100%;
+    min-height: 100%;
+}
+
+.panel-wrapper {
+    height: inherit;
 }
 
 .vl {
-  border-left: 2px solid red;
-  height: 50px;  
+    border-left: 2px solid red;
+    height: 50px;
 }
-.header-contain{
+
+.header-contain {
     width: 100%;
-    padding-top:10px;
+    padding-top: 10px;
     padding-bottom: 5px;
     background-color: white;
 }
-.header-contain-fluid{
+
+.header-contain-fluid {
     background-color: white;
 }
 
-.logo{
+.logo {
     height: 50px;
 }
-.header-text{
+
+.header-text {
     color: #007db6;
-    font-weight: 600;         
+    font-weight: 600;
 }
+
 .dropdown-toggle::after {
     display: none;
 }
+
 .header-menu-text {
     font-size: 30px;
     font-weight: bolder;
-    margin-right: -25px;    
+    margin-right: -25px;
 }
-.main-body{
+
+.main-body {
     background-color: white;
     margin-top: 20px;
 }

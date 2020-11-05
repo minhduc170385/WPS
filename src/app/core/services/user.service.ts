@@ -5,7 +5,7 @@ import { Observable, BehaviorSubject, ReplaySubject, of } from 'rxjs';
 import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
 import { catchError, map, tap, distinctUntilChanged } from 'rxjs/operators';
-import { User } from '../models/user';
+import { User } from '../models/user.model';
 import { ApiEndpoints } from '../utilities/Constants';
 
 
