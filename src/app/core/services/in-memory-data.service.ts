@@ -11,7 +11,7 @@ import { DataType, Status, Step } from '../models/validation';
 export class InMemoryDataService {
   createDb(){
     const users = [     
-      { id: 1, username: 'duc', email: 'duc@fsoft.com', password: 'abc',role:'admin',active:true, token: '1234' },
+      { id: 1, username: 'duc', displayname:'duc.bui', email: 'duc.bui@wps.com', password: 'abc',role:'admin',active:true, token: '1234' },
       { id: 2, username: 'sau', email: 'sau@fsoft.com', password: 'abc',role:'user',active:true, token: '1234' },
       { id: 3, username: 'tien', email: 'tien@fsoft.com', password: 'abc',role:'user',active:false, token: '1234' }
     ];

@@ -12,9 +12,9 @@ export class JwtService {
   }
 
   saveToken(token: String) {
-    let myObj = {Id:1, username: 'duc', email:'minhduc@fsoft.com.vn',role:'Admin'};
+    let myObj = {Id:1, username: 'duc', email:'minhduc@fsoft.com.vn',role:'Admin',displayname:'duc.bui'};
+    
     localStorage.setItem('CurrentAccount', JSON.stringify(myObj));
-
     window.localStorage['jwtToken'] = token;
   }
 

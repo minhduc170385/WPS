@@ -7,14 +7,14 @@
         <div class="form-group row col-6">
           <label for="Username" class="col-sm-4 col-form-label">Username</label>
           <div class="col-6">
-            <label class="col-form-label" id="Username">JohnSmit1</label>
+            <label class="col-form-label" id="Username">{{profileUser.username}}</label>
           </div>
         </div>
         <!-- User Id -->
         <div class="form-group row col-6">
           <label for="UserId" class="col-sm-4 col-form-label">User ID</label>
           <div class="col-6">
-            <label class="col-form-label" id="UserId">1</label>
+            <label class="col-form-label" id="UserId">{{profileUser.Id}}</label>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
         <div class="form-group row col-6">
           <label for="email" class="col-sm-4 col-form-label">Email Address</label>
           <div class="col-6">
-            <label class="col-form-label" id="email">JohnSmit1@wpsic.com</label>
+            <label class="col-form-label" id="email">{{profileUser.email}}</label>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
         <div class="form-group row col-6">
           <label for="role" class="col-sm-4 col-form-label">User Role</label>
           <div class="col-6">
-            <label class="col-form-label" id="role">User</label>
+            <label class="col-form-label" id="role">{{profileUser.role}}</label>
           </div>
         </div>
       </div>
@@ -98,11 +98,11 @@
           
         </div>
         <div class="col-2">
-          <button type="submit" class="btn btn-secondary btn-lg float-right">Save</button>
+          <button type="submit" class="btn btn-secondary btn-lg float-right" (click)="onSubmit()">Save</button>
           
         </div>
         <div class="col-2">
-          <button type="submit" class="btn btn-secondary btn-lg">Cancel</button>
+          <button type="submit" class="btn btn-secondary btn-lg" (click)="onCancel()">Cancel</button>
         </div>
       </div>
 

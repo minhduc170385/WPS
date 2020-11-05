@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   
   constructor(
     private userService: UserService,
-    private router: Router,    
+    private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {

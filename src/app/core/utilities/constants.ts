@@ -33,4 +33,6 @@ export abstract class AppRoutes {
     static readonly PROFILE_SLASH = `/${AppRoutes.PROFILE}`
     static readonly NEW_VALIDATION = "newvalidation"
     static readonly NEW_VALIDATION_SLASH = `/${AppRoutes.NEW_VALIDATION}`
+    static readonly FORGOTPASSWORD="forgotpassword"
+    static readonly FORGOTPASSWORD_SLASH = `/${AppRoutes.FORGOTPASSWORD}`
 }

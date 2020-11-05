@@ -1,5 +1,4 @@
 <div class="container"></div>
-
 <div class="container login-body">
 <p class="login-title">Login</p>
 <p class="login-title-sub">Enter your username and password to access the tesing tool</p>
@@ -39,8 +38,17 @@
     <div class="row justify-content-center">
       <button type="submit" class="btn btn-lg btn-warning login-btn">Sign In</button>
     </div>
+    <div class="row justify-content-center">
+      <button type="button" class="btn btn-lg btn-link btn-link-forgetpassword" (click)="onForgotPasswordClick()">Forget Password</button>
+    </div>
+
+    <!-- *ngIf="showLoginFail" -->
+    <div class="alert alert-danger" role="alert" style="margin-top: 30px;" *ngIf="showLoginFail">
+      Invalid username and password Please try again
+    </div>
+    
     <div class="row justify-content-center" style="height: 100px;">
-      <p class ="login-title-sub" style="padding-top: 40px;">Need help? Contact the <a>System Administrator</a> for support</p>
+      <p class ="login-title-sub" style="padding-top: 20px;">Need help? Contact the <a>System Administrator</a> for support</p>
     </div>
     
   </form>

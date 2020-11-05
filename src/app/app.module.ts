@@ -16,6 +16,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ValidationModule } from './validation/validation.module';
 import { SettingsModule } from './settings/settings.module';
+import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
 
 @NgModule({
   declarations: [    
@@ -27,7 +28,7 @@ import { SettingsModule } from './settings/settings.module';
     ProfileComponent, 
     HeaderComponent, 
     FooterComponent,    
-    ProfileComponent
+    ProfileComponent, ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

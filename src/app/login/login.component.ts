@@ -14,7 +14,8 @@ import { AppRoutes } from '../core/utilities/Constants';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isSubmitted = false;
-  user: User;  
+  user: User;
+  showLoginFail = false;  
 
   constructor(private authService: UserService,
     private router: Router,
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value);
     this.isSubmitted = true;
     if (this.loginForm.invalid) {
+      this.showLoginFail = true;
       return;
     }
 
@@ -56,6 +58,10 @@ export class LoginComponent implements OnInit {
         console.log("Login fail");
       });
   }
+
+  onForgotPasswordClick(){
+    this.router.navigateByUrl(AppRoutes.FORGOTPASSWORD);
+  };
 
   get username() {
     return this.loginForm.get('username');

@@ -3,6 +3,7 @@ import { Deserializable } from './deserializable';
 export class User implements Deserializable {    
     id: number;
     username: string;
+    displayname:string;
     email: string;
     role: Role;    
     password: string;

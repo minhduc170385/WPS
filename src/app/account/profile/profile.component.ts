@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl, FormBuilder, Validators } from '@angular/forms';
 import { PasswordValidation } from './custom-validators';
+import { Router, RouterLink,ActivatedRoute } from '@angular/router';
+import { AppRoutes } from '../../core/utilities/Constants';
 
 //import { CustomValidators } from './custom-validators';
 //import {MustMatch} from './custom-validators.validator'
@@ -16,14 +18,14 @@ export class ProfileComponent implements OnInit {
   id: number;
   loading = false;
   submitted= false; 
-  item: any;
+  profileUser: any;
 
-  constructor(fb: FormBuilder) { 
-    this.item = JSON.parse(localStorage.getItem('CurrentAccount'));
-    console.log(this.item);
+  constructor(fb: FormBuilder,private router: Router,) { 
+    this.profileUser = JSON.parse(localStorage.getItem('CurrentAccount'));
+    console.log(this.profileUser);
 
     this.frChangePassword = fb.group({
-      displayName: ['',[Validators.required, Validators.minLength(2)]],
+      displayName: [this.profileUser.displayname,[Validators.required, Validators.minLength(2)]],
       newpassword: ['', [Validators.required, Validators.minLength(3)]],
       confirmPassword: ['', Validators.required]
     }, {
@@ -37,9 +39,7 @@ export class ProfileComponent implements OnInit {
     // this.frChangePassword.addControl('confirmPassword', new FormControl('',
     //     [Validators.compose(
     //         [Validators.required, this.validateAreEqual.bind(this)]
-    //     )]));
-
-    
+    //     )]));   
 
 
     //  this.frChangePassword = new FormGroup({        
@@ -59,7 +59,16 @@ export class ProfileComponent implements OnInit {
   //      ? null : {'mismatch': true};
   // }
 
+
+  onSubmit(){
+    //this.router.navigateByUrl(AppRoutes.D);
+    console.log("Save");
+  }
+  onCancel(){
+    console.log("Cancel");
+  }
   
+
   get newpassword(){
     return this.frChangePassword.get('newpassword');    
   }

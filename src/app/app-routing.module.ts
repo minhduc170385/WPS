@@ -1,3 +1,4 @@
+import { ForgetPasswordComponent } from './login/forget-password/forget-password.component';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
 import { AuthGuard } from './core/services/auth.guard';
 import { NoAuthGuard } from './core/services/no-auth.guard';
@@ -11,9 +12,11 @@ import { ProfileComponent } from './account/profile/profile.component'
 import { SettingsModule } from './settings/settings.module';
 import { ValidationModule } from './validation/validation.module';
 
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: AppRoutes.HOME},
   { path: AppRoutes.LOGIN, component: LoginComponent, canActivate: [NoAuthGuard],data:{showHeader:false} },
+  { path: AppRoutes.FORGOTPASSWORD, component: ForgetPasswordComponent, canActivate: [NoAuthGuard],data:{showHeader:false} },
   { path: AppRoutes.HOME, component: HomeComponent, canActivate: [AuthGuard] },
   { path: AppRoutes.SETTINGS, loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
   { path: AppRoutes.VALIDATION, loadChildren: () => import('./validation/validation.module').then(m => m.ValidationModule) },
