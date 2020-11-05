@@ -106,13 +106,11 @@
             </tbody>
         </table>
 
-        <div class="container" style="background-color: aqua;">
-            <div class="">
-                <label>{{ totalRecord + " " + (totalRecord > 1 ? "records" : "record") + " found"}}</label>
-                <div class="d-flex justify-content-center p-2 mt-n5">
-                    <ngb-pagination [collectionSize]="totalRecord" [(page)]="page" [pageSize]="pageSize" (pageChange)="setPageTo()">
-                    </ngb-pagination>
-                </div>
+        <div class="container paging">
+            <label style="margin-left: 100px;">{{ totalRecord + " " + (totalRecord > 1 ? "records" : "record") + " found"}}</label>
+            <div class="d-flex justify-content-center mt-n5">
+                <ngb-pagination [collectionSize]="totalRecord" [(page)]="page" [pageSize]="pageSize" (pageChange)="setPageTo()">
+                </ngb-pagination>
             </div>
         </div>
 

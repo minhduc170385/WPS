@@ -33,18 +33,12 @@ legend.search-form-border {
 }
 
 .paging {
+    height: 50px;
+    width: 100%;
     position: absolute;
     margin-top: 0px;
+    margin-left: -120px;
     bottom: -100px;
-    background-color: aqua;
-}
-
-.bottom {
-    position: absolute;
-    margin-top: 0px;
-    margin-left: -45px;
-    bottom: -100px;
-    background-color: aqua;
 }
 
 .inprogress {
