@@ -11,7 +11,7 @@ body {
 .tab-content,
 .tab-pane,
 .tabbable {
-    height: 92.4%;
+    height: 100%;
 }
 
 .panel-body .tab-content {

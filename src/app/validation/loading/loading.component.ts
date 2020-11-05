@@ -91,6 +91,6 @@ export class LoadingComponent implements OnInit {
   }
 
   newValidation() {
-    this.router.navigate([AppRoutes.NEW_VALIDATION], { relativeTo: this.activatedRoute});
+    this.router.navigate(["../"+AppRoutes.NEW_VALIDATION], { relativeTo: this.activatedRoute});
   }
 }

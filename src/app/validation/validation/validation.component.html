@@ -1,27 +1,9 @@
 <div class="container">
     <h2 class="validating-tool-name">Validating tool</h2>
-    <div class="panel panel-default">
-        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-            <li [ngbNavItem]="1">
-                <a ngbNavLink>Data Loads</a>
-                <ng-template ngbNavContent>
-                    <app-loading></app-loading>
-                </ng-template>
-            </li>
-            <li [ngbNavItem]="2">
-                <a ngbNavLink>Data Matching</a>
-                <ng-template ngbNavContent>
-                    <app-matching></app-matching>
-                </ng-template>
-            </li>
-            <li [ngbNavItem]="3">
-                <a ngbNavLink>Payment & Invoicing</a>
-                <ng-template ngbNavContent>
-                    <app-payment></app-payment>
-                </ng-template>
-            </li>
-        </ul>
-
-        <div [ngbNavOutlet]="nav" class="mt-2"></div>
-    </div>
+    <ul ngbNav [activeId]="route.fragment | async" class="nav-tabs">
+        <li [ngbNavItem]="link.fragment" *ngFor="let link of links">
+            <a ngbNavLink [routerLink]="link.link">{{ link.title }}</a>
+        </li>
+    </ul>
+    <router-outlet></router-outlet>
 </div>
