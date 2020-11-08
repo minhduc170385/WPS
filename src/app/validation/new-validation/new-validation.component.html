@@ -1,24 +1,75 @@
-<div class="container" style="background-color: white;">
-    <form>
-        <div class="form-group row">
-            <label for="Data Type" class="col-sm-2 col-form-label">Data Type</label>
-            <select id="inputDataType" class="form-control col-sm-2">
-                <option selected>Choose...</option>
-                <option>...</option>
-            </select>        
-        </div>
-        <div class="form-group row">
-            <label for="" class="col-sm-2 col-form-label">Input File</label>
-        </div>
-    </form>
-    <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
-        <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
-      </div>
-        <div  class="files-list" *ngFor="let file of files;let i=index">
-          <p>{{ file }}</p>
-          <button class="delete-file" (click)="deleteAttachment(i)">
-            <img src="../../assets/Recycle_Bin_Full.png">
-          </button>
-        </div>
+<div class="container" style="background-color: white; padding-top: 30px;">
+  <!-- <h1> File Upload</h1> -->
+  <!-- <input type="file" (change)="onFileSelected($event)">
+  <button type="button" (click)="onUpload()">Upload</button> -->
 
-</div>
+  <form [formGroup] = "form_newValidation" (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+      <label for="Data Type" class="col-sm-2 col-form-label">Data Type</label>
+      <select id="dataType" class="form-control col-sm-2" (change)="changeDataType($event)"
+        formControlName="dataType" >
+        <option value="" selected disabled>-Select-</option>
+        <option *ngFor="let type of types" [value] ="type">{{type}} </option>
+      </select>
+      
+      <div class="alert alert-danger" *ngIf="isSubmitted && dataType.errors?.required">Data Type is required</div>
+      <!-- (change)="changeDataType($event)" -->
+
+      <!-- <div *ngIf="dataType.touched && dataType.invalid" class="alert alert-danger">
+        <div *ngIf="dataType.errors.required">Data Type is required</div>        
+    </div> -->
+
+    </div>
+    <!-- (click)="fileInput.click()"  -->
+    <div class="form-group row">
+      <label for="" class="col-sm-2 col-form-label">Input File</label>
+      <div class="uploadfilecontainer" *ngIf ="files?.length ==0">
+        <div appDrapDrop (onFileDropped)="uploadFile($event)" style="height: 100%;">          
+          <div class="row justify-content-center" style="padding-top: 20px;">
+            <i class="fa fa-cloud-upload fa-3x" aria-hidden="true"></i>
+          </div>
+          <div class="row justify-content-center">
+            <button type="button" (click)="fileInput.click()" class="btn-select-file">Select file</button>
+          </div>
+          <div class="row justify-content-center">
+            or drap and drop it here
+          </div>
+          <input type="file" 
+            hidden #fileInput 
+            (change)="uploadFile($event.target.files)" 
+            accept=".txt" 
+            formControlName="fileUpload">          
+        </div>
+      </div>
+      <div class="uploadfilecontainer" *ngIf ="files?.length >0">        
+        <div class="files-list row justify-content-center" *ngFor="let file of files;let i=index">
+          <div>
+            <label >{{ file }}</label>            
+            <button class="delete-file" (click)="deleteAttachment(i)" data-placement="right" title="Remove File">              
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+          </div>
+          
+        </div>
+      </div>
+      <div *ngIf="fileUpload.errors?.inValidFileType"     
+      class="alert alert-danger">Invalid file format. Only .txt files are supported for Member load. Please select another file
+    </div>    
+    </div>
+
+    <div class="row justify-content-between" style="margin-top: 90px;">
+      <div class="col-8">
+        
+      </div>
+      <div class="col-2">
+        <button type="submit"  [disabled]="!form_newValidation.valid"  class="btn btn-secondary btn-lg float-right">Save</button>
+        <!-- [disabled]="!newValidation_form.valid" -->
+        
+      </div>
+      <div class="col-2">
+        <button type="button" class="btn btn-secondary btn-lg" >Cancel</button>
+      </div>
+    </div>
+   <br>
+      
+  </form>

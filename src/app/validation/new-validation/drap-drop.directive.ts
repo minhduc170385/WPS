@@ -1,4 +1,4 @@
-import { Directive, Output, Input, EventEmitter, HostBinding, HostListener } from '@angular/core';
+import { Directive, Output, EventEmitter, HostBinding, HostListener } from '@angular/core';
 @Directive({
   selector: '[appDrapDrop]'
 })
@@ -25,7 +25,7 @@ export class DrapDropDirective {
     this.opacity = '1'
   }
   //Drop listener
-  @HostListener('drop', ['$event']) public ondrop(evt) {
+  @HostListener('drop', ['$event']) public ondrop(evt) {    
     evt.preventDefault();
     evt.stopPropagation();
     this.background = '#f5fcff'
@@ -34,6 +34,7 @@ export class DrapDropDirective {
     if (files.length > 0) {
       this.onFileDropped.emit(files)
     }
+    
 
   }
 

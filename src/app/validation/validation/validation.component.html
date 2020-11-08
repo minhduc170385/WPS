@@ -35,6 +35,13 @@
                     <app-payment></app-payment>
                 </ng-template>
             </li>
+            <li [ngbNavItem]="4">
+                <a ngbNavLink>New Validation</a>
+                <ng-template ngbNavContent>
+                    <new-validation></new-validation>
+                </ng-template>
+            </li>
+
         </ul>
 
         <div [ngbNavOutlet]="nav" class="mt-2"></div>

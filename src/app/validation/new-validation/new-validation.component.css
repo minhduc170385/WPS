@@ -4,28 +4,36 @@
     background-size: 100px;
     background-position: center;
     height: 200px;
-    width: 80%;
-    margin: 20px auto;
-    border: 2px dashed #1C8ADB;
+    width: 40%;
+    /* margin-left: 160px;
+    margin-top:-20px; */
+    /*margin: 20px auto;
+     border: 2px dashed #1C8ADB; */
+    border: 2px dashed gray;
+    background-color: lightgray;
     border-radius: 10px;
   }
   
   .uploadfilecontainer:hover {
     cursor: pointer;
-    background-color: #9ecbec !important;
+    background-color: #9ecbec !important;    
     opacity: 0.8;
   }
   
   .files-list {
     display: flex;
     justify-content: space-between;
-    width: 80%;
-    margin: 10px auto;
+    width: 100%;
+    /*margin-left: 160px;
+    margin: 10px auto;     
     background: #ffffff;
     border: 1px dashed;
-    border-radius: 12px;
-    padding: 5px;
     color: #1c8adb;
+    */
+    border-radius: 12px;
+    padding: 18px;
+    padding-top: 75px;
+    
   }
   
   .files-list .delete-file {
@@ -35,4 +43,8 @@
   }
   .files-list .delete-file img{
     width:30px;
+  }
+  .btn-select-file {
+    width: 145px;
+    height: 40px;
   }
