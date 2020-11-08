@@ -1,51 +1,9 @@
-<div class="validation-page">
+<div class="container">
     <h2 class="validating-tool-name">Validating tool</h2>
-    <div class="panel panel-default">
-        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-            <li [ngbNavItem]="1">
-                <a ngbNavLink>Data Loads</a>
-                <ng-template ngbNavContent>
-                    <app-loading></app-loading>
-
-                    <!-- <div class="container" *ngIf="!showNewValidation">
-                        <button type="button" (click)="onNewValidationClick()" class="btn btn-primary">New Validation</button>
-                    </div>
-
-                    <app-loading *ngIf="!showNewValidation"></app-loading>
-                    <new-validation *ngIf="showNewValidation"></new-validation> -->
-
-                    <!-- <div *ngIf="!showNewValidation; else elseNewValidation">
-                        <app-loading></app-loading>
-                    </div>                    
-                    <ng-template #elseNewValidation>
-                        <new-validation></new-validation>
-                    </ng-template> -->
-                    
-                </ng-template>
-            </li>
-            <li [ngbNavItem]="2">
-                <a ngbNavLink>Data Matching</a>
-                <ng-template ngbNavContent>
-                    <app-matching></app-matching>
-                </ng-template>
-            </li>
-            <li [ngbNavItem]="3">
-                <a ngbNavLink>Payment & Invoicing</a>
-                <ng-template ngbNavContent>
-                    <app-payment></app-payment>
-                </ng-template>
-            </li>
-            <li [ngbNavItem]="4">
-                <a ngbNavLink>New Validation</a>
-                <ng-template ngbNavContent>
-                    <new-validation></new-validation>
-                </ng-template>
-            </li>
-
-        </ul>
-
-        <div [ngbNavOutlet]="nav" class="mt-2"></div>
-
-
-    </div>
+    <ul ngbNav [activeId]="activeLinkIndex" class="nav-tabs">
+        <li [ngbNavItem]="link.index" *ngFor="let link of links">
+            <a ngbNavLink [routerLink]="link.link">{{ link.title }}</a>
+        </li>
+    </ul>
+    <router-outlet></router-outlet>
 </div>

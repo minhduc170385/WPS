@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
           break;
         }
       case MenuAction.DashBoard:{
-        console.log("Dashboard");
+        this.router.navigateByUrl(AppRoutes.HOME_SLASH);
         break;
 
       }
@@ -58,7 +58,7 @@ export class HeaderComponent implements OnInit {
       }
       case MenuAction.Administration:{
         console.log(item);
-        this.router.navigateByUrl(AppRoutes.ACCOUNT_SLASH);
+        this.router.navigateByUrl(AppRoutes.SETTINGS);
         break;
       }
       case MenuAction.SignOut:{

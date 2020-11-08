@@ -1,6 +1,6 @@
-<div class="loading-page">
-    <div class="container">
-        <button type="button" class="btn btn-primary">New Validation</button>
+<div class="container border loading-page">
+    <div class="container py-3">
+        <button type="button" class="btn btn-primary" (click)="newValidation()">New Validation</button>
     </div>
     <div class="container">
         <form [formGroup]="searchForm">
@@ -16,6 +16,7 @@
 
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary calendar" (click)="dbFrom.toggle()" type="button">
+                                        <i style="float: right;" class="fa fa-calendar" aria-hidden="true"></i>
                                     </button>
                                 </div>
                             </div>
@@ -31,6 +32,7 @@
 
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary calendar" (click)="dbTo.toggle()" type="button">
+                                        <i style="float: right;" class="fa fa-calendar" aria-hidden="true"></i>
                                     </button>
                                 </div>
                             </div>
@@ -79,7 +81,7 @@
     </div>
 
     <div class="container" [hidden]="isLoading">
-        <table class="table">
+        <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th scope="col">Data Type</th>
@@ -95,8 +97,10 @@
                     <td>
                         <span><a href="validation.inputFilePath">{{ validation.inputFileName }}</a></span>
                     </td>
-                    <td>{{ validation.runTime }}</td>
-                    <td>{{ validation.status }}</td>
+                    <td>{{ validation.runTime | date: reportDateFormat}}</td>
+                    <td>
+                        <span [ngClass]="validation.status">{{ validation.status }}</span>
+                    </td>
                     <td>
                         <a href="#">Report</a>
                     </td>
@@ -104,9 +108,13 @@
             </tbody>
         </table>
 
-        <div class="d-flex justify-content-center p-2">
-            <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="setPageTo()">
-            </ngb-pagination>
+        <div class="container paging">
+            <label style="margin-left: 100px; margin-top: -10px;">{{ totalRecord + " " + (totalRecord > 1 ? "records" : "record") + " found"}}</label>
+            <div class="d-flex justify-content-center mt-n5">
+                <ngb-pagination [collectionSize]="totalRecord" [(page)]="page" [pageSize]="pageSize" (pageChange)="setPageTo()">
+                </ngb-pagination>
+            </div>
         </div>
+
     </div>
 </div>

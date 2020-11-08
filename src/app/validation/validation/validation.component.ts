@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink,ActivatedRoute,NavigationEnd } from '@angular/router';
-import { AppRoutes } from '../../core/utilities/Constants';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { max } from 'rxjs/operators';
+import { AppRoutes } from 'src/app/core/utilities/Constants';
 
 @Component({
   selector: 'app-validation',
@@ -10,26 +10,26 @@ import { AppRoutes } from '../../core/utilities/Constants';
 })
 export class ValidationComponent implements OnInit {
   
-  active = 1;
-  showNewValidation = false; 
-  constructor(private router: Router,
-    private route: ActivatedRoute ) {
-    }
+  activeLinkIndex = 0;
+  
+  links = [
+    { title: 'Data Loads', link: AppRoutes.VALIDATING_LOADING, index: 0 },
+    { title: 'Data Matching', link: AppRoutes.VALIDATING_MATCHING, index: 1 },
+    { title: 'Payment & Invoicing', link: AppRoutes.VALIDATING_PAYMENT, index: 2 }
+  ];
+  
+  constructor(public route: ActivatedRoute, public router: Router) { }
 
-  ngOnInit(): void { 
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.showNewValidation = this.route.firstChild.snapshot.data.showNewValidation !== false;       
-      }
+  ngOnInit(): void {  
+    this.router.events.subscribe((res) => {
+      this.setActiveLinkIndex()
     });
-   }
-
-  onNewValidationClick(){
-    console.log("new Validation");
-    this.showNewValidation = true;
-    
-    //this.router.navigateByUrl(AppRoutes.VALIDATING_PAYMENT);
+    this.setActiveLinkIndex()
   }
 
+  setActiveLinkIndex() {
+    this.activeLinkIndex = Math.max(this.links.indexOf(this.links.find(tab => tab.link === this.router.url.split('/').pop())), 0);
+    console.log(this.router.url.split('/').pop()+ " " + this.activeLinkIndex)
+  }
 
 }

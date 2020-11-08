@@ -21,6 +21,10 @@ const routes: Routes = [
         data:{showNewValidation:false}
       },
       {
+        path: AppRoutes.VALIDATING_LOADING,
+        component: LoadingComponent
+      },
+      {
         path: AppRoutes.VALIDATING_MATCHING,
         component: MatchingComponent
       },
@@ -32,6 +36,7 @@ const routes: Routes = [
         path: AppRoutes.NEW_VALIDATION,
         component: NewValidationComponent
       }
+    
     ]
   }
 ];

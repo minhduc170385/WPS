@@ -1,5 +1,5 @@
 export abstract class Constants {
-     
+    static readonly DATE_FORMAT = "MM/dd/yyyy HH:mm:ss"
 }
 
 export abstract class ApiEndpoints {
